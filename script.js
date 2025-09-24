@@ -166,18 +166,12 @@ document.getElementById('rechercheLivreForm').addEventListener('submit', functio
     const anneeMax = document.getElementById('anneeMax').value ? parseInt(document.getElementById('anneeMax').value) : null;
     const criteres = { titre, auteur, genre, anneeMin, anneeMax };
     const resultats = rechercherLivres(criteres);
-    const divResultat = document.getElementById('resultatsRecherche');
     if (resultats.length === 0) {
-        divResultat.innerHTML = "<p>Aucun livre trouvé.</p>";
+        alert("Aucun livre trouvé.");
     } else {
-        let html = "<ul>";
-        resultats.forEach(livre => {
-            html += `<li>ID: ${livre.id}, Titre: ${livre.titre}, Auteur: ${livre.auteur}, ISBN: ${livre.isbn}, Année: ${livre.annee}, Genre: ${livre.genre}</li>`;
-        });
-        html += "</ul>";
-        divResultat.innerHTML = html;
+        let message = resultats.map(livre => `ID: ${livre.id}, Titre: ${livre.titre}, Auteur: ${livre.auteur}, ISBN: ${livre.isbn}, Année: ${livre.annee}, Genre: ${livre.genre}`).join('\n');
+        alert(message);
     }
-    divResultat.style.color = 'black';
 });
 
 // --- Initialisation au chargement de la page ---
