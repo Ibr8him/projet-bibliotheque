@@ -1,0 +1,152 @@
+/* Disposition des formulaires en colonnes */
+.formulaires-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.form-col {
+    min-width: 220px;
+    max-width: 270px;
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+body {
+    background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #5a189a;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+form {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px 0 rgba(90, 24, 154, 0.08);
+    padding: 1rem 1.2rem 0.8rem 1.2rem;
+    margin: 1.2rem 0;
+    max-width: 270px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-weight: 500;
+    color: #5a189a;
+    margin-bottom: 0.2rem;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #d1c4e9;
+    border-radius: 7px;
+    font-size: 1rem;
+    background: #f8f7fa;
+    margin-bottom: 0.5rem;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border: 1.5px solid #5a189a;
+    outline: none;
+}
+
+button[type="submit"] {
+    background: linear-gradient(90deg, #5a189a 0%, #8ec5fc 100%);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 0.7rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px rgba(90, 24, 154, 0.08);
+    transition: background 0.2s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #8ec5fc 0%, #5a189a 100%);
+    color: #fff;
+    transform: translateY(-2px) scale(1.03);
+}
+
+#messageAjout, #messageSuppression {
+    margin: 0.7rem 0 1.2rem 0;
+    font-size: 1.08rem;
+    text-align: center;
+    min-height: 1.3em;
+}
+
+#resultatsRecherche {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px 0 rgba(90, 24, 154, 0.06);
+    padding: 1rem 1.5rem;
+    margin: 1.2rem 0;
+    max-width: 500px;
+    width: 100%;
+}
+
+#listeResultats {
+    list-style: disc inside;
+    color: #222;
+    font-size: 1rem;
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+}
+
+#listeLivres {
+    width: 320px;
+    padding: 0.6rem 1rem;
+    border-radius: 7px;
+    border: 1px solid #d1c4e9;
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    background: #f8f7fa;
+    transition: border 0.2s;
+}
+
+#listeLivres:focus {
+    border: 1.5px solid #5a189a;
+    outline: none;
+}
+
+#detailsLivre {
+    margin: 1rem 0 2rem 0;
+    font-size: 1.08rem;
+    color: #333;
+    background: #f3f0fa;
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    min-height: 1.2em;
+    max-width: 400px;
+}
+
+hr {
+    border: none;
+    border-top: 1.5px solid #d1c4e9;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 600px;
+}

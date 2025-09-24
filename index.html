@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>bibliotheque</title>
+</head>
+<body>
+    <h1>Bibliothèque</h1>
+    <!--formulaire de gestion de la bibliothèque-->
+    <!--liste deroulante des  livres -->
+    <h2>Liste des livres</h2>
+    <select id="listeLivres">
+        <option value="">--Sélectionner un livre--</option> 
+    </select>
+    <div id="detailsLivre"></div>
+
+    <hr>
+
+
+
+
+
+
+
+    <div class="formulaires-flex">
+        <!-- Formulaire d'ajout de livre -->
+        <div class="form-col">
+            <form id="ajoutLivreForm">
+                <h2>Ajouter un livre</h2>
+                <label for="titre">Titre:</label>
+                <input type="text" id="titre" name="titre" required>
+                <label for="auteur">Auteur:</label>
+                <input type="text" id="auteur" name="auteur" required>
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" required pattern="\d{3}-\d-\d{2}-\d{6}-\d">
+                <label for="annee">Année de publication:</label>
+                <input type="number" id="annee" name="annee" required min="1000" max="9999">
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" required>
+                <button type="submit">Ajouter le livre</button>
+            </form>
+            <div id="messageAjout"></div>
+        </div>
+        <!-- Formulaire de recherche de livre -->
+        <div class="form-col">
+            <form id="rechercheLivreForm">
+                <h2>Rechercher un livre</h2>
+                <label for="titreRecherche">Titre:</label>
+                <input type="text" id="titreRecherche" name="titreRecherche">
+                <label for="auteurRecherche">Auteur:</label>
+                <input type="text" id="auteurRecherche" name="auteurRecherche">
+                <label for="genreRecherche">Genre:</label>
+                <input type="text" id="genreRecherche" name="genreRecherche">
+                <label for="anneeMin">Année de publication (min):</label>
+                <input type="number" id="anneeMin" name="anneeMin" min="1000" max="9999">
+                <label for="anneeMax">Année de publication (max):</label>
+                <input type="number" id="anneeMax" name="anneeMax" min="1000" max="9999">
+                <button type="submit">Rechercher</button>
+            </form>
+            <div id="resultatsRecherche">
+                <h2>Résultats de la recherche</h2>
+                <ul id="listeResultats"></ul>
+            </div>
+        </div>
+        <!-- Formulaire de suppression de livre -->
+        <div class="form-col">
+            <form id="suppressionLivreForm">
+                <h2>Supprimer un livre</h2>
+                <label for="idSuppression">ID du livre à supprimer:</label>
+                <input type="number" id="idSuppression" name="idSuppression" required min="1">
+                <button type="submit">Supprimer le livre</button>
+            </form>
+            <div id="messageSuppression"></div>
+        </div>
+    </div>
+    <hr>
+
+    <script src="script.js"></script>
+</body>
+</html>
