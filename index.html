@@ -43,6 +43,8 @@
                 <input type="number" id="annee" name="annee" required min="1000" max="9999">
                 <label for="genre">Genre:</label>
                 <input type="text" id="genre" name="genre" required>
+                <label for="nbre">Nombre d'exemplaires:</label>
+                <input type="number" id="nbre" name="nbre" required min="1">
                 <button type="submit">Ajouter le livre</button>
             </form>
             <div id="messageAjout"></div>
@@ -61,6 +63,8 @@
                 <input type="number" id="anneeMin" name="anneeMin" min="1000" max="9999">
                 <label for="anneeMax">Année de publication (max):</label>
                 <input type="number" id="anneeMax" name="anneeMax" min="1000" max="9999">
+                <label for="nbreRecherche">Nombre d'exemplaires (min):</label>
+                <input type="number" id="nbreRecherche" name="nbreRecherche" min="1">
                 <button type="submit">Rechercher</button>
             </form>
         </div>
