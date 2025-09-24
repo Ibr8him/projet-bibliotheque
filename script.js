@@ -26,7 +26,7 @@ function afficherLivres() {
         ul.innerHTML = '<li>Aucun livre dans la bibliothèque.</li>';
     } else {
         bibliotheque.livres.forEach(livre => {
-            ul.innerHTML += `<li>ID: ${livre.id}, Titre: ${livre.titre}, Auteur: ${livre.auteur}, ISBN: ${livre.isbn}, Année: ${livre.annee}, Genre: ${livre.genre}</li>`;
+            ul.innerHTML += `<li>ID: ${livre.id}, Titre: ${livre.titre}, Auteur: ${livre.auteur}, ISBN: ${livre.isbn}, Année: ${livre.annee}, Genre: ${livre.genre}, nombre d'exemplaire: ${livre.nbre}</li>`;
         });
     }
     const select = document.getElementById('listeLivres');
@@ -39,8 +39,8 @@ function afficherLivres() {
 }
 
 // --- Ajout d'un livre ---
-function ajouterLivre(titre, auteur, isbn, annee, genre) {
-    if (!titre || !auteur || !isbn || !annee || !genre) {
+function ajouterLivre(titre, auteur, isbn, annee, genre , nbre) {
+    if (!titre || !auteur || !isbn || !annee || !genre || !nbre) {
         return { succes: false, message: "Tous les paramètres sont obligatoires." };
     }
     const regexISBN = /^\d{3}-\d-\d{2}-\d{6}-\d$/;
@@ -61,14 +61,15 @@ function ajouterLivre(titre, auteur, isbn, annee, genre) {
         auteur,
         isbn,
         annee,
-        genre
+        genre,
+        nbre
     };
     bibliotheque.livres.push(livre);
     sauvegarderBibliotheque();
     return { succes: true, message: "Livre ajouté avec succès.", livre };
 }
 
-// --- Suppression d'un livre ---
+
 function supprimerLivre(id) {
     const index = bibliotheque.livres.findIndex(livre => livre.id === id);
     if (index === -1) {
@@ -79,7 +80,6 @@ function supprimerLivre(id) {
     return { succes: true, message: "Livre supprimé avec succès." };
 }
 
-// --- Recherche de livres ---
 function rechercherLivres(criteres) {
     let resultats = bibliotheque.livres.filter(livre => {
         let ok = true;
@@ -134,7 +134,8 @@ document.getElementById('ajoutLivreForm').addEventListener('submit', function(e)
     const isbn = document.getElementById('isbn').value;
     const annee = parseInt(document.getElementById('annee').value);
     const genre = document.getElementById('genre').value;
-    const resultat = ajouterLivre(titre, auteur, isbn, annee, genre);
+    const nbre = parseInt(document.getElementById('nbre').value);
+    const resultat = ajouterLivre(titre, auteur, isbn, annee, genre, nbre);
     const divResultat = document.getElementById('messageAjout');
     divResultat.textContent = resultat.message;
     divResultat.style.color = resultat.succes ? 'green' : 'red';
@@ -164,12 +165,13 @@ document.getElementById('rechercheLivreForm').addEventListener('submit', functio
     const genre = document.getElementById('genreRecherche').value;      
     const anneeMin = document.getElementById('anneeMin').value ? parseInt(document.getElementById('anneeMin').value) : null;
     const anneeMax = document.getElementById('anneeMax').value ? parseInt(document.getElementById('anneeMax').value) : null;
-    const criteres = { titre, auteur, genre, anneeMin, anneeMax };
+    const nbre = document.getElementById('nbreRecherche').value ? parseInt(document.getElementById('nbreRecherche').value) : null;
+    const criteres = { titre, auteur, genre, anneeMin, anneeMax,nbre };
     const resultats = rechercherLivres(criteres);
     if (resultats.length === 0) {
         alert("Aucun livre trouvé.");
     } else {
-        let message = resultats.map(livre => `ID: ${livre.id}, Titre: ${livre.titre}, Auteur: ${livre.auteur}, ISBN: ${livre.isbn}, Année: ${livre.annee}, Genre: ${livre.genre}`).join('\n');
+        let message = resultats.map(livre => `\nID: ${livre.id} \nTitre: ${livre.titre} \n Auteur: ${livre.auteur} \nISBN: ${livre.isbn} \nAnnée: ${livre.annee} \nNombre d'exemplaire:${livre.nbre} \nGenre: ${livre.genre}`).join('\n');
         alert(message);
     }
 });
